@@ -1,0 +1,199 @@
+/* frontend/src/index.css */
+
+/* 🎨 Theme Variables */
+:root {
+  --bg: #ffffff;             /* White background */
+  --card: #f5f5f5;           /* Light gray cards */
+  --text: #2e2e2e;           /* Dark text */
+  --muted: #666666;         /* Muted text */
+  --accent: #708238;        /* Olive green primary */
+  --accent-2: #8ca745;      /* Lighter olive */
+  --danger: #e63946;        /* Red for overdue or delete */
+  --glass: rgba(0, 0, 0, 0.03);
+}
+
+/* 🧭 Base */
+* {
+  box-sizing: border-box;
+}
+
+body, html, #root {
+  height: 100%;
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* 🧱 Layout */
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+}
+
+.app-card {
+  width: 100%;
+  max-width: 720px;
+  background: var(--card);
+  border-radius: 14px;
+  padding: 28px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* 📝 Header */
+.app-header {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase; /* Small to caps */
+}
+
+.subtitle {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* ✍️ Input row */
+.task-input-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.task-input {
+  flex: 1;
+  padding: 12px 14px;
+  background: var(--glass);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  color: var(--text);
+  outline: none;
+  font-size: 14px;
+}
+
+.task-input::placeholder {
+  color: #999;
+}
+
+.btn {
+  border-radius: 10px;
+  padding: 10px 14px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.btn.primary {
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  color: #fff;
+}
+
+.btn.ghost {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.btn.small {
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 8px;
+}
+
+.btn.danger {
+  background: transparent;
+  color: var(--danger);
+  border: 1px solid rgba(230, 57, 70, 0.3);
+}
+
+/* 📋 Task List */
+.task-list {
+  margin-top: 18px;
+}
+
+.empty {
+  color: var(--muted);
+  text-align: center;
+  padding: 20px 0;
+}
+
+.task-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  border-radius: 10px;
+  background: #fdfdfd;
+  margin-bottom: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* 🚨 Overdue styling */
+.task-row.overdue {
+  border-left: 6px solid var(--danger); /* red stripe */
+  background: #fff5f5;
+}
+
+.task-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.task-left input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  accent-color: var(--accent);
+}
+
+.task-title {
+  font-size: 15px;
+  color: var(--text);
+  word-break: break-word;
+}
+
+.task-row.done .task-title {
+  text-decoration: line-through;
+  opacity: 0.6;
+  color: var(--muted);
+}
+
+/* ✏️ Edit Input */
+.edit-input {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: transparent;
+  color: var(--text);
+  width: 100%;
+}
+
+/* ⚡ Actions */
+.task-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-left: 12px;
+}
+
+/* 🦶 Footer */
+.app-footer {
+  margin-top: 18px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+}
