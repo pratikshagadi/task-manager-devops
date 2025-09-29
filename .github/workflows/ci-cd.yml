@@ -2,19 +2,20 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ main ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ main ]
+    branches: [ "main" ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Set up Docker
-        uses: docker/setup-buildx-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
       - name: Build Docker images
-        run: docker-compose build
+        run: docker compose build
