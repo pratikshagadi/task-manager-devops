@@ -18,11 +18,10 @@ jobs:
       - name: 🚀 Deploy Frontend to Vercel
         uses: amondnet/vercel-action@v25
         with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}               # Vercel personal token
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}             # Your Vercel Org ID
-          vercel-project-id: ${{ secrets.VERCEL_FRONTEND_PROJECT_ID }} # Vercel Frontend Project ID
-          working-directory: ./frontend                          # Path to your frontend folder
-          prod: true
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_FRONTEND_PROJECT_ID }}
+          working-directory: ./frontend   # 👈 make sure this folder exists and has package.json
 
       # 🌐 Trigger Backend Deploy on Render
       - name: 🌐 Deploy Backend to Render
