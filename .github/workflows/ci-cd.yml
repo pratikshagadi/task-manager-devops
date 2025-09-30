@@ -20,7 +20,7 @@ jobs:
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }} # required
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }} # required
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }} # required
+          vercel-project-id: ${{ secrets.VERCEL_FRONTEND_PROJECT_ID }} # required
           working-directory: ./frontend   # 👈 crucial for monorepo
 
       # 🌐 Trigger Backend Deploy on Render using deploy hook
