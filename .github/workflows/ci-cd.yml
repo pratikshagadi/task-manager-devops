@@ -7,15 +7,24 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: 🧾 Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+      # 🚀 Deploy Frontend to Vercel
+      - name: 🚀 Deploy Frontend to Vercel
+        uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}               # Vercel personal token
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}             # Your Vercel Org ID
+          vercel-project-id: ${{ secrets.VERCEL_FRONTEND_PROJECT_ID }} # Vercel Frontend Project ID
+          working-directory: ./frontend                          # Path to your frontend folder
+          prod: true
 
-      - name: Build Docker images
-        run: docker compose build
+      # 🌐 Trigger Backend Deploy on Render
+      - name: 🌐 Deploy Backend to Render
+        run: |
+          curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK_BACKEND }}"
