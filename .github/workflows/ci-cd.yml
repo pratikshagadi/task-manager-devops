@@ -14,16 +14,22 @@ jobs:
       - name: 🧾 Checkout repository
         uses: actions/checkout@v3
 
-      # 🚀 Deploy Frontend to Vercel (frontend folder)
+      - name: 📦 Install frontend dependencies
+        run: npm install
+        working-directory: ./frontend
+
+      - name: 🏗️ Build frontend
+        run: npm run build
+        working-directory: ./frontend
+
       - name: 🚀 Deploy Frontend to Vercel
         uses: amondnet/vercel-action@v25
         with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }} # required
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }} # required
-          vercel-project-id: ${{ secrets.VERCEL_FRONTEND_PROJECT_ID }} # required
-          working-directory: ./frontend   # 👈 crucial for monorepo
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          working-directory: ./frontend
 
-      # 🌐 Trigger Backend Deploy on Render using deploy hook
       - name: 🌐 Deploy Backend to Render
         run: |
           curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK_BACKEND }}"
